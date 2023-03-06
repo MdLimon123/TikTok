@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:tiktok_clone/Route/route.dart';
 import 'package:tiktok_clone/Screens/Auth/controller/auth_controller.dart';
+import 'package:tiktok_clone/Screens/Auth/login_screen.dart';
 import 'package:tiktok_clone/Screens/Auth/signup_screen.dart';
 import 'package:tiktok_clone/const.dart';
 
@@ -38,12 +39,10 @@ class MyApp extends StatelessWidget {
                     const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
                   ],
                   background: Container(color: const Color(0xFFF5F5F5))),
-              theme: ThemeData.dark()
-                  .copyWith(scaffoldBackgroundColor: backgroundColor),
+              theme: ThemeData.dark(),
               debugShowCheckedModeBanner: false,
-              initialRoute: signup,
               getPages: getPages,
-              home: SignUpScreen());
+              home: LoginScreen());
         });
   }
 }

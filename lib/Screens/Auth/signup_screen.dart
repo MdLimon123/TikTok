@@ -129,8 +129,8 @@ class SignUpScreen extends StatelessWidget {
                     Obx(() {
                       if (authController.isLoading.value) {
                         return SizedBox(
-                          height: 10.h,
-                          width: 10.w,
+                          height: 15.h,
+                          width: 20.w,
                           child: const CircularProgressIndicator(
                             color: Colors.white,
                           ),

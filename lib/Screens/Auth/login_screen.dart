@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone/Route/route.dart';
+import 'package:tiktok_clone/Screens/Auth/controller/auth_controller.dart';
 import 'package:tiktok_clone/const.dart';
 import 'package:tiktok_clone/widgets/text_input_field.dart';
 
@@ -11,6 +12,7 @@ class LoginScreen extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -67,14 +69,38 @@ class LoginScreen extends StatelessWidget {
                   color: buttonColor, borderRadius: BorderRadius.circular(8.r)),
               child: InkWell(
                 onTap: () {
-                  print('Login');
+                  authController.loginUser(
+                      _emailController.text, _passwordController.text);
                 },
-                child: Center(
-                  child: Text(
-                    'Login',
-                    style:
-                        TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w700),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                            fontSize: 25.sp, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    Obx(
+                      () => SizedBox(
+                        width: authController.isLoading.value ? 10.w : 0,
+                      ),
+                    ),
+                    Obx(() {
+                      if (authController.isLoading.value) {
+                        return SizedBox(
+                          height: 15.h,
+                          width: 20.w,
+                          child: const CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    })
+                  ],
                 ),
               ),
             ),
