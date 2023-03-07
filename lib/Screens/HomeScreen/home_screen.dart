@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone/widgets/custom_icon.dart';
@@ -11,7 +10,7 @@ import 'Controller/home_controller.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  final _homeController = Get.put(HomeController());
+  final _homeController = Get.put(UploadVideoController());
 
   @override
   Widget build(BuildContext context) {
